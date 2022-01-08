@@ -1,6 +1,9 @@
 # Dinosaur_auto
 Plays the google Chrome dinosaur game for you
 
+## Contributors
+Francisco Jorquera
+Timothy Mead
 
 ## Environment
 This runs in a python environment with the following pip installs:
