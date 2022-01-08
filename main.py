@@ -16,18 +16,27 @@ def quit():
     print("Program Ended")
 keyboard.add_hotkey('esc',quit)
 
-time.sleep(5)
+# Jump loc calibration
+print("Calibrating")
+while running:
+    # If space is pressed
+    if (keyboard.is_pressed('space')):
+        # Store the location of the cursor
+        (x, y) = pyautogui.position()
+        break
+
+
 # Main Loop
 while running:
-    x1,y1,a,b = 288,316,40,29
-    box = (x1,y1,x1+a,y1+b)
+    a,b = 40,29
+    box = (x,y,x+a,y+b)
     image = ImageGrab.grab(box)
     gray = ImageOps.grayscale(image)
     a = np.array(gray.getcolors())
     value = a.sum()
     print(value)
-    if value != 1407:
-        pyautogui.press("space")
+    if value != 1415:
+        keyboard.press("space")
+        time.sleep(0.0001)
+        keyboard.release("space")
 
-
-    
