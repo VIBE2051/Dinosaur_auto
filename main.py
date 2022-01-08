@@ -30,7 +30,7 @@ while running:
     print(color)
     print(mean_color)
 
-    # Look ahead 
+    # Look ahead code
 
 
     if mean_color < 240:
