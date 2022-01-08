@@ -6,18 +6,21 @@ import numpy as np
 
 running = True
 
+# Define hotkey to quit program [esc]
 def quit():
     global running
     running = False
     print("Program Ended")
 keyboard.add_hotkey('esc',quit)
 
+# Function that grabs a screen portion
 def screenGrab(bbox=None):
     img = ImageGrab.grab(bbox=bbox)
     img = np.array(img)
     img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
     return img
 
+# Main Loop
 while running:
     img = screenGrab(bbox=(360,85,575,210))
     
