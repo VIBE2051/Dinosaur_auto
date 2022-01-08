@@ -5,7 +5,7 @@ from PIL import ImageGrab
 import numpy as np
 
 running = True
-x = 760
+x = 712
 y = 330
 
 # Define hotkey to quit program [esc]
@@ -20,7 +20,9 @@ time.sleep(5)
 # Main Loop
 while running:
     # Take a screenshot
-    image = ImageGrab.grab()
+    image = ImageGrab.grab(bbox=(712,300,1070,350))
+
+    
 
     # Get the colour of the pixel a x, y
     color = image.getpixel((x, y))
@@ -28,6 +30,9 @@ while running:
     print(color)
     print(mean_color)
 
+    # Look ahead 
+
+
     if mean_color < 240:
       keyboard.send('space')
-    #time.sleep(0.000001)
+    
