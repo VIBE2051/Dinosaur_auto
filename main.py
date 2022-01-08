@@ -1,9 +1,10 @@
-import cv2
+import pyautogui
 import random
 import time
 import keyboard
 from PIL import ImageGrab
 import numpy as np
+
 
 running = True
 x = 792
@@ -17,45 +18,30 @@ def quit():
 keyboard.add_hotkey('esc',quit)
 
 time.sleep(5)
-
 # Main Loop
 while running:
-    # Take a screenshot
-    image = ImageGrab.grab(bbox=(712,300,1070,350))
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    (thresh, image) = cv2.threshold(image, 127, 255, cv2.THRESH_BINARY)
+    im = pyautogui.screenshot()
+    screen = im.getpixel((722,250))
 
-    # Choose look ahead amount at random
-    start_ahead = random.randint(792, 832)
-    ahead = start_ahead
+    x1 = im.getpixel((760,327))
+    x2 = im.getpixel((780,327))
+    x3 = im.getpixel((800,327))
+    x4 = im.getpixel((820,327))
     
-    # Setting zero and white we will flip when game colors invert
-    zero = 0
-    white = 255
-    # Flips white to black and vice versa
-    if image[144][376] == zero:
-        ahead += 4
-        temp = zero
-        zero = white
-        white = temp
+    y1 = im.getpixel((760,301))
+    y2 = im.getpixel((770,300))
+    y3 = im.getpixel((780,308))
+    y4 = im.getpixel((790,300))
 
-    # Checks for 3 cactus small
-    if image[320][ahead] == zero or image[320][ahead-1] == zero or image[320][ahead-2] == zero:
-        keyboard.release("down")
-        keyboard.press("space")
-        time.sleep(0.01)
-        keyboard.release("space")
+
+    # Checks if it is day or night time
     
+    if screen[0] == 247:
+        if x1 != 247 or x2 != 247 or x3 != 247 or x4 != 247 or y1 != 247 or y2 != 247 or y3 != 247 or y4 != 247:
+            keyboard.send('space')
+            time.sleep(0.0001)
 
-    # Get the colour of the pixel a x, y
-    color = image.getpixel((x, y))
-    mean_color = (color[0] + color[1] + color[2])/3
-    print(color)
-    print(mean_color)
-
-    # Look ahead code
-    look_ahead = random.randint()
-
-    if mean_color < 240:
-      keyboard.send('space')
-    
+        else:
+            if x1[0] != 0 or x2[0] != 0 or x3[0] != 0 or x4[0] != 0 or y1[0] != 0 or y2[0] != 0 or y3[0] != 0 or y4[0] != 0:
+                keyboard.send('space')
+                time.sleep(0.0001)

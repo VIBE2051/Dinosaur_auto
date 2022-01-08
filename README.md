@@ -2,7 +2,7 @@
 Plays the google Chrome dinosaur game for you
 
 # Contributors
-Francisco Jorquera  
+Francisco Jorquera
 Timothy Mead
 
 ## Environment
