@@ -1,7 +1,7 @@
 # Dinosaur_auto
 Plays the google Chrome dinosaur game for you
 
-## Contributors
+# Contributors
 Francisco Jorquera
 Timothy Mead
 
