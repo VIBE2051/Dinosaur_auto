@@ -5,6 +5,8 @@ from PIL import ImageGrab
 import numpy as np
 
 running = True
+x = 100
+y = 100
 
 # Define hotkey to quit program [esc]
 def quit():
@@ -13,19 +15,13 @@ def quit():
     print("Program Ended")
 keyboard.add_hotkey('esc',quit)
 
-# Function that grabs a screen portion
-def screenGrab(bbox=None):
-    img = ImageGrab.grab(bbox=bbox)
-    img = np.array(img)
-    img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
-    return img
-
 # Main Loop
 while running:
-    img = screenGrab(bbox=(360,85,575,210))
-    
-    cv2.imshow("Screen",img)
-    cv2.waitKey(1)
+    # Take a screenshot
+    image = ImageGrab.grab()
+
+    # Get the colour of the pixel a x, y
+    color = image.getpixel((x, y))
     
 
 
