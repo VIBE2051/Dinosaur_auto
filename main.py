@@ -21,7 +21,6 @@ def screenGrab(bbox=None):
 while running:
     img = screenGrab(bbox=(360,85,575,210))
     
-    
     cv2.imshow("Screen",img)
     cv2.waitKey(1)
     
